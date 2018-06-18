@@ -9,12 +9,14 @@ module ExchangeRate
 
     def initialize
       @endpoint = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml"
-      @namespace = ""
+      @namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref"
     end
 
     def set_data_source(new_endpoint, new_namespace = nil)
       @endpoint = new_endpoint
       @namespace = new_namespace
+
+      DataCache.instance.clear
     end
 
     def fetch_and_save_fx_data
@@ -27,9 +29,6 @@ module ExchangeRate
         DataCache.instance.write("fx_data", fx_data_hash)
         return fx_data_hash
       end
-
-    rescue ExchangeRate::EmptyFxDataHash => e
-      p e.message
     end
 
     def update_fx_data

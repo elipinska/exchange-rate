@@ -9,7 +9,7 @@ module ExchangeRate
 
   class EmptyFxDataHash < StandardError
     def initialize
-      super("WARNING: FX data hash parsed from the XML source is empty. Please check if the formatting adheres to ECB's feed format.")
+      super("FX data hash parsed from the XML source is empty. Please check if the XML file's formatting adheres to ECB's feed format.")
     end
   end
 
