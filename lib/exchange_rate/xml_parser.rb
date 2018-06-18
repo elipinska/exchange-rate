@@ -1,6 +1,7 @@
 require "open-uri"
 require "nokogiri"
 require "singleton"
+require "exchange_rate/error"
 
 module ExchangeRate
   class XMLParser
@@ -8,7 +9,7 @@ module ExchangeRate
 
     def initialize
       @endpoint = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml"
-      @namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref"
+      @namespace = ""
     end
 
     def set_data_source(new_endpoint, new_namespace = nil)
@@ -19,8 +20,16 @@ module ExchangeRate
     def fetch_and_save_fx_data
       all_data = fetch_data
       fx_data_hash = create_fx_data_hash(all_data)
-      DataCache.instance.write("fx_data", fx_data_hash)
-      return fx_data_hash
+
+      if fx_data_hash.empty?
+        raise EmptyFxDataHash.new
+      else
+        DataCache.instance.write("fx_data", fx_data_hash)
+        return fx_data_hash
+      end
+
+    rescue ExchangeRate::EmptyFxDataHash => e
+      p e.message
     end
 
     def update_fx_data
