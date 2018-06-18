@@ -7,7 +7,7 @@ require "bigdecimal"
 module ExchangeRate
 
   def self.at(date, base_curr, counter_curr)
-    fx_data = DataCache.read("fx_data") ? DataCache.read("fx_data") : XMLParser.fetch_and_save_fx_data
+    fx_data = DataCache.instance.read("fx_data") ? DataCache.instance.read("fx_data") : XMLParser.instance.fetch_and_save_fx_data
     date_string = date.to_s
 
     if (!fx_data[date_string])

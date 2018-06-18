@@ -1,17 +1,22 @@
+require "singleton"
+
 module ExchangeRate
   class DataCache
+    include Singleton
 
-    @store = {}
+    def initialize
+      @store = {}
+    end
 
-    def self.write(key, value)
+    def write(key, value)
       @store[key] = value
     end
 
-    def self.read(key)
+    def read(key)
       return @store[key]
     end
 
-    def self.clear
+    def clear
       @store.clear
     end
   end

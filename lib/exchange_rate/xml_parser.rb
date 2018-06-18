@@ -1,25 +1,29 @@
 require "open-uri"
 require "nokogiri"
+require "singleton"
 
 module ExchangeRate
   class XMLParser
+    include Singleton
 
-    @endpoint = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml"
-    @namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref"
+    def initialize
+      @endpoint = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml"
+      @namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref"
+    end
 
-    def self.set_data_source(new_endpoint, new_namespace = nil)
+    def set_data_source(new_endpoint, new_namespace = nil)
       @endpoint = new_endpoint
       @namespace = new_namespace
     end
 
-    def self.fetch_and_save_fx_data
+    def fetch_and_save_fx_data
       all_data = fetch_data
       fx_data_hash = create_fx_data_hash(all_data)
-      DataCache.write("fx_data", fx_data_hash)
+      DataCache.instance.write("fx_data", fx_data_hash)
       return fx_data_hash
     end
 
-    def self.update_fx_data
+    def update_fx_data
       fetch_and_save_fx_data
 
       return "FX data updated"
@@ -27,12 +31,12 @@ module ExchangeRate
 
     private
 
-    def self.fetch_data
+    def fetch_data
       doc = Nokogiri::XML(open(@endpoint))
       return doc
     end
 
-    def self.create_fx_data_hash(data)
+    def create_fx_data_hash(data)
 
       fx_data_hash = Hash.new
 
@@ -44,7 +48,7 @@ module ExchangeRate
       return fx_data_hash
     end
 
-    def self.extract_time_cubes(data)
+    def extract_time_cubes(data)
       if @namespace == nil
         time_cubes = data.xpath("//Cube[@time]")
       else
@@ -52,7 +56,7 @@ module ExchangeRate
       end
     end
 
-    def self.create_currencies_and_rates_hash(time_cube)
+    def create_currencies_and_rates_hash(time_cube)
       currencies_and_rates_hash = Hash.new
 
       currencies_and_rates_hash["EUR"] = "1"
