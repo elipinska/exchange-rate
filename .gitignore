@@ -6,3 +6,5 @@
 /pkg/
 /spec/reports/
 /tmp/
+exchange_rate-0.1.0.gem
+Gemfile.lock
