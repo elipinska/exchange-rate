@@ -19,7 +19,7 @@ module ExchangeRate
       return @store.transaction { @store[key] }
     end
 
-    def clear(key)
+    def delete(key)
       @store.transaction  do
       @store.delete(key)
       end

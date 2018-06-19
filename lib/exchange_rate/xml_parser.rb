@@ -15,7 +15,7 @@ module ExchangeRate
       @endpoint = new_endpoint
       @namespace = new_namespace
 
-      DataCache.instance.clear("fx_data")
+      DataCache.instance.delete("fx_data")
     end
 
     def fetch_and_save_fx_data
