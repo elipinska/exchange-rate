@@ -11,12 +11,12 @@ module ExchangeRate
     end
 
 
-    desc "at DATE BASE_CURR COUNTER_CURR", "Provides the FX rate between two currencies at specific date"
-
-    method_option :date, :default => Date.today
-    def at(date, base_curr, counter_curr)
-      puts ExchangeRate.at(date, base_curr, counter_curr)
-    end
+    # desc "at DATE BASE_CURR COUNTER_CURR", "Provides the FX rate between two currencies at specific date"
+    #
+    # method_option :date, :default => Date.today
+    # def at(date, base_curr, counter_curr)
+    #   puts ExchangeRate.at(date, base_curr, counter_curr)
+    # end
 
   end
 end
