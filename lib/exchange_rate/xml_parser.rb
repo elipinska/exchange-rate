@@ -31,11 +31,6 @@ module ExchangeRate
       end
     end
 
-    def update_fx_data
-      fetch_and_save_fx_data
-      return "FX data updated"
-    end
-
     private
 
     def fetch_data

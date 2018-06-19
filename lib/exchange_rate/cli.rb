@@ -5,10 +5,10 @@ require 'exchange_rate/xml_parser'
 module ExchangeRate
   class CLI < Thor
 
-    desc "fetch", "Retrieves data from XML source"
+    desc "fetch_rates", "Retrieves data from XML source"
 
-    def fetch
-      puts ExchangeRate::XMLParser.instance.update_fx_data
+    def fetch_rates
+      puts ExchangeRate.fetch_rates
     end
 
 
