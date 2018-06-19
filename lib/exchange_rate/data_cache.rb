@@ -1,27 +1,29 @@
 require "singleton"
+require "yaml/store"
 
 module ExchangeRate
   class DataCache
     include Singleton
 
     def initialize
-      @store = {}
+      @store = YAML::Store.new("/Users/macbook/Documents/Coding/Ruby programmes/exchange_rate/exchange_rate/fx_data.yml")
     end
 
     def write(key, value)
-      @store[key] = value
+      @store.transaction do
+        @store[key] = value
+      end
     end
 
     def read(key)
-      return @store[key]
+      return @store.transaction { @store[key] }
     end
 
-    def clear
-      @store.clear
+    def clear(key)
+      @store.transaction  do
+      @store.delete(key)
+      end
     end
 
-    def get_store
-      return @store
-    end
   end
 end
