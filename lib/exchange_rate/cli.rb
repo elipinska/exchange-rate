@@ -1,6 +1,5 @@
 require 'thor'
 require 'exchange_rate'
-require 'exchange_rate/xml_parser'
 
 module ExchangeRate
   class CLI < Thor

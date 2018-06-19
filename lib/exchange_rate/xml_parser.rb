@@ -1,7 +1,6 @@
 require "open-uri"
 require "nokogiri"
 require "singleton"
-require "exchange_rate/error"
 
 module ExchangeRate
   class XMLParser
