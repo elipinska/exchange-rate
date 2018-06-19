@@ -15,5 +15,10 @@ module ExchangeRate
     return "FX rates updated"
   end
 
+  def ExchangeRate.set_data_source(new_endpoint, new_namespace = nil)
+    XMLParser.instance.set_data_source(new_endpoint, new_namespace)
+    return "Data source changed to #{new_endpoint}"
+  end
+
 
 end

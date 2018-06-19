@@ -52,6 +52,7 @@ module ExchangeRate
     def extract_time_cubes(data)
       if @namespace == nil
         time_cubes = data.xpath("//Cube[@time]")
+        p time_cubes
       else
         time_cubes = data.xpath("//a:Cube[@time]", {"a" => @namespace})
       end
