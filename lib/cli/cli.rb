@@ -7,7 +7,8 @@ module ExchangeRate
     desc "fetch_rates", "Retrieves data from XML source"
 
     def fetch_rates
-      puts ExchangeRate.fetch_rates
+      ExchangeRate.fetch_rates
+      puts "FX rates updated"
     end
 
   end
