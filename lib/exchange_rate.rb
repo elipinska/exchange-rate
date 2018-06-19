@@ -6,7 +6,7 @@ require "exchange_rate/fx_calculator"
 
 module ExchangeRate
 
-  def ExchangeRate.at(date, base_curr, counter_curr)
+  def ExchangeRate.at(date = Date.today, base_curr, counter_curr)
     return FxCalculator.rate_at_date(date, base_curr, counter_curr)
   end
 
