@@ -8,7 +8,7 @@ module ExchangeRate
 
     def fetch_rates
       ExchangeRate.fetch_rates
-      puts "FX rates updated"
+      puts "FX data loaded"
     end
 
   end

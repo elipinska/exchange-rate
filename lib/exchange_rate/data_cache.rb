@@ -19,5 +19,9 @@ module ExchangeRate
     def clear
       @store.clear
     end
+
+    def get_store
+      return @store
+    end
   end
 end
