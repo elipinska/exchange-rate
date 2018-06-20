@@ -8,7 +8,7 @@ module ExchangeRate
 
     def fetch_rates
       ExchangeRate.fetch_rates
-      puts "FX data loaded"
+      p DataCache.instance.store
     end
 
   end

@@ -4,6 +4,8 @@ module ExchangeRate
   class DataCache
     include Singleton
 
+    attr_reader :store
+
     def initialize
       @store = DefaultCache.instance
     end
