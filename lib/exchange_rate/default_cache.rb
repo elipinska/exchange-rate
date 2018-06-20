@@ -1,23 +1,19 @@
 require "singleton"
 
 module ExchangeRate
-  class DataCache
+  class DefaultCache
     include Singleton
 
     def initialize
-      @store = DefaultCache.instance
-    end
-
-    def set_store(new_store)
-      @store = new_store
+      @store = {}
     end
 
     def write(key, value)
-      @store.write(key, value)
+      @store[key] = value
     end
 
     def read(key)
-      return @store.read(key)
+      return @store[key]
     end
 
     def delete(key)
