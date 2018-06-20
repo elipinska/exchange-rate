@@ -1,8 +1,6 @@
 # ExchangeRate
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/exchange_rate`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A Ruby library which uses the 90 day European Central Bank (ECB) feed to provide foreign exchange rates for 33 different currencies based on a particular date (the endpoint can be changed to your data source of choice, as long as it follows ECB's feed format). The data is cached locally and can be updated at any point.
 
 ## Installation
 
