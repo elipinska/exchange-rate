@@ -4,19 +4,17 @@ A Ruby library which uses the 90 day European Central Bank (ECB) feed to provide
 
 ## Installation
 
-Add this line to your application's Gemfile:
+To use the gem locally:
 
-```ruby
-gem 'exchange_rate'
+Add 'exchange_rate' to your app's Gemfile by including
+
 ```
+gem 'exchange_rate', :path => "/path/to/exchange_rate"
+```
+Run ```bundle install```
 
-And then execute:
+You can now require 'exchange_rate' in your app's files.
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install exchange_rate
 
 ## Usage
 
@@ -36,7 +34,7 @@ Foreign exchange (FX) data can be updated by calling the ExchangeRate.fetch_rate
 ExchangeRate.fetch_rates
 ```
 
-You can use a different source of FX data as long as it follows the structure of the <a href= "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml">ECB's feed</a>. The namespace is optional but can be useful <a href="http://www.nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces">to avoid name collisions</a>.
+You can use a different source of FX data as long as it follows the structure of the <a href= "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml">ECB's feed</a>. The unique namespace url is optional but can be useful <a href="http://www.nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces">to avoid name collisions</a>.
 
 ```
 ExchangeRate.set_data_source("http://www.mywebsite.com/fx_feed.xml", "http://www.mywebsite.com/unique_namespace_url")
