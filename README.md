@@ -1,11 +1,12 @@
 # ExchangeRate
 
-A Ruby library which uses the 90 day European Central Bank (ECB) feed to provide foreign exchange rates for 33 different currencies based on a particular date (the endpoint can be changed to your data source of choice, as long as it follows <a href= "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml">ECB's feed</a> format). The data is cached locally in a YAML file and can be updated at any point.
+A Ruby library which uses the 90 day European Central Bank (ECB) feed to provide foreign exchange (FX) rates for 33 different currencies based on a particular date (the endpoint can be changed to your data source of choice, as long as it follows <a href= "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml">ECB's feed</a> format). The data is cached locally in a YAML file and can be updated at any point.
 
 ## Installation
 
 To install the gem, from your local directory run
-```gem build exchange_rate.gemspec
+```
+gem build exchange_rate.gemspec
 ```
 then
 ```
@@ -17,7 +18,7 @@ gem install exchange_rate-0.1.0.gem
 
 ### Get exchange rate at date
 
-The ExchangeRate.at method takes three arguments - date within the past 90 days and two currency codes - and returns the exchange rate as BigDecimal (to ensure an accurate result). Today's data will be used if no date is passed as an argument.
+The ExchangeRate.at method takes three arguments - date within the past 90 days (either as Date or String) and two currency codes - and returns the exchange rate. Today's data will be used if no date is passed as an argument.
 
 ```
 ExchangeRate.at("2018-06-15", "USD", "GBP")
@@ -25,11 +26,15 @@ ExchangeRate.at("2018-06-15", "USD", "GBP")
 => 0.75301828216626422904449810279406692e0
 ```
 
-Foreign exchange (FX) data can be updated by calling the ExchangeRate.fetch_rates method.
+### Update FX rates
+
+FX data can be updated by calling the ExchangeRate.fetch_rates method.
 
 ```
 ExchangeRate.fetch_rates
 ```
+
+
 
 You can use a different source of FX data as long as it follows the structure of the <a href= "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml">ECB's feed</a>. The unique namespace url is optional but can be useful <a href="http://www.nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces">to avoid name collisions</a>.
 
