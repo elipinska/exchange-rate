@@ -18,7 +18,7 @@ gem install exchange_rate-0.1.0.gem
 
 ### Get exchange rate at date
 
-The ExchangeRate.at method takes three arguments - date within the past 90 days (either as Date or String) and two currency codes - and returns the exchange rate as BigDecimal (to ensure accuracy). Today's data will be used if no date is passed as an argument.
+The ExchangeRate.at method takes three arguments - date within the past 90 days (either as Date or String) and two currency codes - and returns the exchange rate as BigDecimal (to ensure accuracy). Today's data will be used if no date is passed as an argument. If a weekend date is passed, the closest past date is used as ECB records information for work days only.
 
 ```
 ExchangeRate.at("2018-06-15", "USD", "GBP")
@@ -45,7 +45,7 @@ ExchangeRate.fetch_rates
 
 #### CLI
 
-You can also fetch the most up-to-date FX rates using the command line. This can be used by a scheduler like cron to retrieve data at regular intervals.
+You can also fetch the most up-to-date FX rates using the command line. This can be used by a scheduler like cron to retrieve data at regular intervals (ECB reference rates are usually updated around 16:00 CET on every working day).
 
 ```
 exchange_rate fetch
