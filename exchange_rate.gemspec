@@ -27,6 +27,7 @@ Bank (ECB) feed to provide foreign exchange rates for 33 different currencies ba
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "pry-byebug", "~> 3.4"
 
   spec.add_dependency "nokogiri", "~> 1.8"
   spec.add_dependency "thor", "~> 0.20"

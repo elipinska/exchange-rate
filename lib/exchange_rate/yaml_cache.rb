@@ -3,8 +3,10 @@ require 'yaml/store'
 module ExchangeRate
   class YamlCache
 
-    def initialize(file_path = "#{Dir.pwd}/fx_data")
-      @store = YAML::Store.new(file_path)
+    TMP_FILE = "/tmp/fx_data.store"
+
+    def initialize(file_path)
+      @store = YAML::Store.new("#{file_path}/fx_data")
     end
 
     def set_store(new_store)

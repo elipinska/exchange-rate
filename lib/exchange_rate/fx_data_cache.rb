@@ -10,7 +10,7 @@ module ExchangeRate
       @store = DefaultCache.instance
     end
 
-    def set_yaml_cache(file_path)
+    def set_yaml_cache(file_path = "#{Dir.pwd}/fx_data")
       @store = YamlCache.new(file_path)
     end
 
