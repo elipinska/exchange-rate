@@ -1,5 +1,4 @@
 require "test_helper"
-require 'date'
 
 class XMLParserTest < Minitest::Test
   def test_can_fetch_and_save_fx_data
@@ -8,7 +7,7 @@ class XMLParserTest < Minitest::Test
     assert_equal(61, ExchangeRate::FxDataCache.instance.read(:fx_data).length)
 
     # Checking the length of the hash for a single date
-    assert_equal(33, ExchangeRate::XMLParser.instance.fetch_and_save_fx_data['2018-06-21'].length)
+    assert_equal(33, ExchangeRate::XMLParser.instance.fetch_and_save_fx_data["2018-06-21"].length)
   end
 
 

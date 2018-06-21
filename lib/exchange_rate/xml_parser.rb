@@ -6,6 +6,8 @@ module ExchangeRate
   class XMLParser
     include Singleton
 
+    attr_reader :endpoint, :namespace
+
     def initialize
       @endpoint = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml"
       @namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref"
