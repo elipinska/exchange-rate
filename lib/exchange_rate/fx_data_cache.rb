@@ -9,9 +9,8 @@ module ExchangeRate
       @store = YAML::Store.new("#{Dir.pwd}/fx_data")
     end
 
-    def set_yaml_cache(file_path)
-      new_store = YAML::Store.new("#{file_path}/fx_data")
-      @store = new_store
+    def set_store(file_path)
+      @store = YAML::Store.new("#{file_path}/fx_data")
     end
 
     def write(key, value)

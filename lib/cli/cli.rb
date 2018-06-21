@@ -4,17 +4,10 @@ require 'exchange_rate'
 module ExchangeRate
   class CLI < Thor
 
-    desc "fetch", "Fetches data from XML store"
-
+    desc "fetch", "Fetches data from XML feed"
+    method_option :path, :aliases => "-p"
     def fetch
-      ExchangeRate.fetch_rates
-    end
-
-
-    desc "fetch_to_yaml", "Set Yaml cache"
-
-    def set_yaml_cache(path)
-      FxDataCache.instance.set_yaml_cache(path)
+      FxDataCache.instance.set_store(options[:path]) if options[:path]
       ExchangeRate.fetch_rates
     end
 
