@@ -2,7 +2,6 @@ require "exchange_rate/version"
 require "exchange_rate/xml_parser"
 require "exchange_rate/fx_data_cache"
 require "exchange_rate/default_cache"
-require "exchange_rate/yaml_cache"
 require "exchange_rate/error"
 require "exchange_rate/fx_calculator"
 
