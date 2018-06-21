@@ -14,6 +14,10 @@ module ExchangeRate
     XMLParser.instance.fetch_and_save_fx_data
   end
 
+  def ExchangeRate.set_store(file_path)
+    FxDataCache.instance.set_store(file_path)
+  end
+
   def ExchangeRate.set_data_source(new_endpoint, new_namespace = nil)
     XMLParser.instance.set_data_source(new_endpoint, new_namespace)
   end
