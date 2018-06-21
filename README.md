@@ -1,6 +1,6 @@
 # ExchangeRate
 
-A Ruby library which uses the 90 day European Central Bank (ECB) feed to provide foreign exchange rates for 33 different currencies based on a particular date (the endpoint can be changed to your data source of choice, as long as it follows <a href= "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml">ECB's feed</a> format). The data is cached locally and can be updated at any point.
+A Ruby library which uses the 90 day European Central Bank (ECB) feed to provide foreign exchange rates for 33 different currencies based on a particular date (the endpoint can be changed to your data source of choice, as long as it follows <a href= "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml">ECB's feed</a> format). The data is cached locally in a YAML file and can be updated at any point.
 
 ## Installation
 
