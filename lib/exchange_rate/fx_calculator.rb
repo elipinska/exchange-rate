@@ -4,7 +4,7 @@ module ExchangeRate
 
   class FxCalculator
 
-    def self.rate_at_date(date, base_curr, counter_curr)
+    def self.rate_at_date(date = Date.today, base_curr, counter_curr)
       fx_data = FxDataCache.instance.read("fx_data") ? FxDataCache.instance.read("fx_data") : XMLParser.instance.fetch_and_save_fx_data
 
       date_string = date.to_s

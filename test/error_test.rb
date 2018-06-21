@@ -1,5 +1,4 @@
 require "test_helper"
-require "exchange_rate/error"
 
 class ErrorTest < Minitest::Test
   def test_not_found_error_can_be_initialized__for_currency
