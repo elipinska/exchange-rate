@@ -13,4 +13,10 @@ module ExchangeRate
     end
   end
 
+  class InvalidDateError < StandardError
+    def initialize
+      super("Invalid argument passed as date")
+    end
+  end
+
 end

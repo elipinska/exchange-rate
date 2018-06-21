@@ -1,4 +1,5 @@
 require "test_helper"
+require 'date'
 
 class XMLParserTest < Minitest::Test
   def test_can_fetch_and_save_fx_data

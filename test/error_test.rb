@@ -13,5 +13,9 @@ class ErrorTest < Minitest::Test
     assert_equal("FX data hash parsed from the XML source is empty", ExchangeRate::EmptyFxDataHashError.new.message)
   end
 
+  def test_invalid_date_error_can_be_initialized
+    assert_equal("Invalid argument passed as date", ExchangeRate::InvalidDateError.new.message)
+  end
+
 
 end

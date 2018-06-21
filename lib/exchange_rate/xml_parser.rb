@@ -15,7 +15,7 @@ module ExchangeRate
       @endpoint = new_endpoint
       @namespace = new_namespace
 
-      FxDataCache.instance.delete("fx_data")
+      FxDataCache.instance.delete(:fx_data)
     end
 
     def fetch_and_save_fx_data
@@ -25,7 +25,7 @@ module ExchangeRate
       if fx_data_hash.empty?
         raise EmptyFxDataHashError.new
       else
-        FxDataCache.instance.write("fx_data", fx_data_hash)
+        FxDataCache.instance.write(:fx_data, fx_data_hash)
         return fx_data_hash
       end
     end

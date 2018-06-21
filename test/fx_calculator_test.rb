@@ -10,5 +10,43 @@ class FxCalculatorTest < Minitest::Test
     assert_equal(BigDecimal("0.1460045068469405442884382042e1"), ExchangeRate::FxCalculator.rate_at_date("USD", "NZD"))
   end
 
+  def test_rate_at_date__raises_currency_not_found_error_base_curr
+    assert_raises(ExchangeRate::NotFoundError) do
+      ExchangeRate::FxCalculator.rate_at_date("JHK", "NZD")
+    end
+  end
+
+  def test_rate_at_date__raises_currency_not_found_error_counter_curr
+    assert_raises(ExchangeRate::NotFoundError) do
+      ExchangeRate::FxCalculator.rate_at_date("NZD", "ZXY")
+    end
+  end
+
+  def test_rate_at_date__raises_currency_not_found_error_invalid_curr
+    assert_raises(ExchangeRate::NotFoundError) do
+      ExchangeRate::FxCalculator.rate_at_date(422, "ZXY")
+    end
+    assert_raises(ExchangeRate::NotFoundError) do
+      ExchangeRate::FxCalculator.rate_at_date("2018-06-14", :test, 422)
+    end
+  end
+
+  def test_valid_date__returns_true
+    assert_equal(true, ExchangeRate::FxCalculator.is_valid("2018-06-13"))
+  end
+
+  def test_valid_date__returns_false
+    assert_equal(false, ExchangeRate::FxCalculator.is_valid("fjnajsn"))
+  end
+
+  def test_rate_at_date__raises_invalid_date_error
+    assert_raises(ExchangeRate::InvalidDateError) do
+      ExchangeRate::FxCalculator.rate_at_date(:hello, 422, "ZXY")
+    end
+    assert_raises(ExchangeRate::InvalidDateError) do
+      ExchangeRate::FxCalculator.rate_at_date(3245, 422, "ZXY")
+    end
+  end
+
 
 end
