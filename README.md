@@ -4,16 +4,13 @@ A Ruby library which uses the 90 day European Central Bank (ECB) feed to provide
 
 ## Installation
 
-To use the gem locally:
-
-Add 'exchange_rate' to your app's Gemfile by including
-
+To install the gem, from your local directory run
+```gem build exchange_rate.gemspec
 ```
-gem 'exchange_rate', :path => "/path/to/exchange_rate"
+then
 ```
-Run ```bundle install```
-
-You can now require 'exchange_rate' in your app's files.
+gem install exchange_rate-0.1.0.gem
+```
 
 
 ## Usage
