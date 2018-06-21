@@ -54,5 +54,11 @@ class FxCalculatorTest < Minitest::Test
     end
   end
 
+  def test_rate_at_date__weekend_date
+    friday_rate = ExchangeRate::FxCalculator.rate_at_date("2018-06-15", "CHF", "NOK")
+    assert_equal(friday_rate, ExchangeRate::FxCalculator.rate_at_date("2018-06-16", "CHF", "NOK"))
+    assert_equal(friday_rate, ExchangeRate::FxCalculator.rate_at_date("2018-06-17", "CHF", "NOK"))
+  end
+
 
 end

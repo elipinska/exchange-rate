@@ -12,7 +12,16 @@ module ExchangeRate
         date_string = date.to_s
 
         if !fx_data[date_string]
-          raise NotFoundError.new(date_string)
+          min_date = Date.parse(fx_data.keys.min)
+          max_date = Date.parse(fx_data.keys.max)
+
+          if Date.parse(date_string) < max_date && Date.parse(date_string) > min_date
+            day_before = Date.parse(date_string).prev_day
+            return rate_at_date(day_before, base_curr, counter_curr)
+          else
+            raise NotFoundError.new(date_string)
+          end
+
         else
           [base_curr, counter_curr].each do |curr|
             raise NotFoundError.new(curr) if !fx_data[date_string][curr] || !fx_data[date_string][curr.upcase]
