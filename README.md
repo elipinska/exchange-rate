@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-###Get exchange rate at date
+### Get exchange rate at date
 
 The ExchangeRate.at method takes three arguments - date within the past 90 days and two currency codes - and returns the exchange rate as BigDecimal (to ensure an accurate result). Today's data will be used if no date is passed as an argument.
 
