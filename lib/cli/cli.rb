@@ -13,7 +13,7 @@ module ExchangeRate
     desc "get_store", "Gets all stored data"
 
     def get_store
-      p DataCache.instance.store
+      p FxDataCache.instance.store
     end
 
   end

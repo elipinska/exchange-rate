@@ -1,7 +1,7 @@
 require "singleton"
 
 module ExchangeRate
-  class DataCache
+  class FxDataCache
     include Singleton
 
     attr_reader :store
@@ -10,8 +10,8 @@ module ExchangeRate
       @store = DefaultCache.instance
     end
 
-    def set_store(new_store)
-      @store = new_store
+    def set_yaml_cache(file_path)
+      @store = YamlCache.new(file_path)
     end
 
     def write(key, value)
