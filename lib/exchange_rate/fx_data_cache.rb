@@ -1,5 +1,5 @@
 require "singleton"
-require 'yaml/store'
+require "yaml/store"
 
 module ExchangeRate
   class FxDataCache

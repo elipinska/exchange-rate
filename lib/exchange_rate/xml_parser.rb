@@ -23,7 +23,7 @@ module ExchangeRate
       fx_data_hash = create_fx_data_hash(all_data)
 
       if fx_data_hash.empty?
-        raise EmptyFxDataHash.new
+        raise EmptyFxDataHashError.new
       else
         FxDataCache.instance.write("fx_data", fx_data_hash)
         return fx_data_hash

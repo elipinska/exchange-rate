@@ -7,7 +7,7 @@ module ExchangeRate
 
   end
 
-  class EmptyFxDataHash < StandardError
+  class EmptyFxDataHashError < StandardError
     def initialize
       super("FX data hash parsed from the XML source is empty")
     end
