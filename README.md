@@ -20,7 +20,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+###Get exchange rate at date
+
+The ExchangeRate.at method takes three arguments - date within the past 90 days and two currency codes - and returns the exchange rate as BigDecimal (to ensure an accurate result). Today's data will be used if no date is passed as an argument.
+
+```
+ExchangeRate.at("2018-06-15", "USD", "GBP")
+
+=> 0.75301828216626422904449810279406692e0
+```
+
+Foreign exchange (FX) data can be updated by calling the ExchangeRate.fetch_rates method.
+
+```
+ExchangeRate.fetch_rates
+```
+
+You can use a different source of FX data as long as it follows the structure of the <a href= "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml">ECB's feed</a>. The namespace is optional but can be useful <a href="http://www.nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces">to avoid name collisions</a>.
+
+```
+ExchangeRate.set_data_source("http://www.mywebsite.com/fx_feed.xml", "http://www.mywebsite.com/unique_namespace_url")
+```
 
 ## Development
 
