@@ -7,7 +7,7 @@ module ExchangeRate
     def self.rate_at_date(date = Date.today, base_curr, counter_curr)
 
       # Check if date is valid
-      if date.is_a?(Date) || is_valid?(date)
+      if date.is_a?(Date) || is_valid(date)
 
         # Read data from cache or fetch it from the source
         fx_data = FxDataCache.instance.read(:fx_data) ? FxDataCache.instance.read(:fx_data) : XMLParser.instance.fetch_and_save_fx_data
@@ -18,7 +18,7 @@ module ExchangeRate
         if !fx_data[date_string]
 
           # If the date is within range, check for the rate at the nearest past date
-          if is_within_range?(date_string)
+          if is_within_range(fx_data, date_string)
             day_before = Date.parse(date_string).prev_day
             return rate_at_date(day_before, base_curr, counter_curr)
           else
@@ -41,14 +41,16 @@ module ExchangeRate
       end
     end
 
-    def self.is_valid?(date)
+    private
+
+    def self.is_valid(date)
       Date.parse(date.to_s)
       return true
     rescue ArgumentError
       return false
     end
 
-    def self.is_within_range(date)
+    def self.is_within_range(fx_data, date)
       min_date = Date.parse(fx_data.keys.min)
       max_date = Date.parse(fx_data.keys.max)
 
