@@ -11,6 +11,7 @@ module ExchangeRate
       @namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref"
     end
 
+  # When a new endpoint is configures, the cache is cleared
     def set_data_source(new_endpoint, new_namespace = nil)
       @endpoint = new_endpoint
       @namespace = new_namespace

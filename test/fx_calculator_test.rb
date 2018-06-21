@@ -48,5 +48,11 @@ class FxCalculatorTest < Minitest::Test
     end
   end
 
+  def test_rate_at_date__future_date
+    assert_raises(ExchangeRate::NotFoundError) do
+      ExchangeRate::FxCalculator.rate_at_date("2018-12-24", 422, "ZXY")
+    end
+  end
+
 
 end
