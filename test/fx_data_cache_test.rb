@@ -1,7 +1,7 @@
 require "test_helper"
 
 class FxDataCacheTest < Minitest::Test
-  # Commented out as these tests create a test store file
+  # Commented out as these tests create a local store file
   # def test_can_write_to_file
   #   ExchangeRate::FxDataCache.instance.write(:test, "This is a test")
   #   assert_equal("This is a test", ExchangeRate::FxDataCache.instance.read(:test))
