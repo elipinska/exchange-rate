@@ -54,8 +54,8 @@ exchange_rate fetch
 If you're using a custom cache location, pass the path to your file as a --path or -p option.
 
 ```
-exchange_rate fetch --path cache/file/path
-exchange_rate fetch --p cache/file/path
+exchange_rate fetch --path "cache/file/path"
+exchange_rate fetch --p "cache/file/path"
 ```
 
 ### Different data source
